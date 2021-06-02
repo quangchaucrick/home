@@ -1,6 +1,8 @@
+
 <html>
+<title>(&#8734;)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<body onclick="play()">
+<body onclick="playNow()">
 <audio src="01-Imagine.mp3" id="audio"></audio>
 <div style="text-align: center; position: absolute; right: 0; left: 0;">
 <div><img src="bg.jpg" ></div>
@@ -20,10 +22,57 @@
 
 
 <script>
-function play() {
-	var audio = document.getElementById("audio");
-	audio.play();
+
+//check for Navigation Timing API support
+if (window.performance) {
+  //console.info("window.performance works fine on this browser");
 }
+console.info(performance.navigation.type);
+if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+  setSavePlay(false);
+} else {
+  //console.info( "This page is not reloaded");
+}
+
+window.onbeforeunload = function ()
+{       
+	setSavePlay(false);
+}; 
+
+
+var x = document.getElementById("audio");
+
+function playAudio() {
+	setSavePlay(true);
+	x.play();
+}
+
+function pauseAudio() {
+	setSavePlay(false);
+  x.pause();
+}
+function checkIsPlayAudio(){
+	if (x.paused == false) {
+		return true;
+	}
+	return false;
+}
+function playNow(){
+	if(checkIsPlayAudio()){
+		pauseAudio()
+	}else{
+		if(getSavePlay() == "false"){
+			playAudio()
+		}
+	}
+}
+function getSavePlay(){
+	return localStorage.getItem("isplay");
+}
+function setSavePlay(status){
+	return localStorage.setItem("isplay",status);
+}
+
 </script>
 <style>
 html {
