@@ -1,3 +1,4 @@
+
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>(&#8734;)</title>
@@ -92,10 +93,13 @@ function setSavePlay(key,status){
 	return localStorage.setItem(key,status);
 }
 function showHide(event,idat){
+	
 	if(event=='show'){
-		document.getElementById(idat).style.visibility = "visible";
+		//document.getElementById(idat).style.visibility = "visible";
+		document.getElementById(idat).style.display = 'block';
 	}else{
-		document.getElementById(idat).style.visibility = "hidden";
+		//document.getElementById(idat).style.visibility = "hidden";
+		document.getElementById(idat).style.display = 'none';
 	}
 }
 
@@ -187,7 +191,7 @@ html {
   }
 }
 .visi-hide{
-    visibility: hidden;
+    display:none;
 }
 #amazingl{position: absolute; bottom: 0px;}
 #amazingr{float: right; position: absolute; bottom: 0px; right: 0px;}
