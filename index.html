@@ -72,7 +72,8 @@ function playNow(){
 	if(checkIsPlayAudio()){
 		pauseAudio()
 	}else{
-		if(getSavePlay("isplay") == "false"){
+		var old_status = getSavePlay("isplay");
+		if(old_status == "false" || old_status == null){
 			playAudio()
 		}
 	}
