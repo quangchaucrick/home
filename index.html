@@ -1,3 +1,5 @@
+
+
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>(&#8734;)</title>
@@ -40,7 +42,7 @@ if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
 
 window.onbeforeunload = function ()
 {       
-    offmusic()
+	offmusic()
 };
 
 var x = document.getElementById("audio");
@@ -50,53 +52,53 @@ x.onended = function() {
 };
 
 function playAudio() {
-    showHide('show','amazingl')
-    showHide('show','amazingr')
-    setSavePlay("isplay",true);
-    setSavePlay("idAt",idAt);
-    x.play();
+	showHide('show','amazingl')
+	showHide('show','amazingr')
+	setSavePlay("isplay",true);
+	setSavePlay("idAt",idAt);
+	x.play();
 }
 
 function pauseAudio() {
-    offmusic()
-    x.pause();
+	offmusic()
+	x.pause();
 }
 function checkIsPlayAudio(){
-    if (x.paused == false) {
-        return true;
-    }
-    return false;
+	if (x.paused == false) {
+		return true;
+	}
+	return false;
 }
 function playNow(){
-    if(checkIsPlayAudio()){
-        pauseAudio()
-    }else{
-        if(getSavePlay("isplay") == "false"){
-            playAudio()
-        }
-    }
+	if(checkIsPlayAudio()){
+		pauseAudio()
+	}else{
+		if(getSavePlay("isplay") == "false"){
+			playAudio()
+		}
+	}
 }
 function offmusic(){
 
-    if(getSavePlay("idAt") == idAt){
-        setSavePlay("isplay",false);
-        showHide('hide','amazingl')
-        showHide('hide','amazingr')
-    }
-
+	if(getSavePlay("idAt") == idAt){
+		setSavePlay("isplay",false);
+		showHide('hide','amazingl')
+		showHide('hide','amazingr')
+	}
+	
 }
 function getSavePlay(key){
-    return localStorage.getItem(key);
+	return localStorage.getItem(key);
 }
 function setSavePlay(key,status){
-    return localStorage.setItem(key,status);
+	return localStorage.setItem(key,status);
 }
 function showHide(event,idat){
-    if(event=='show'){
-        document.getElementById(idat).style.visibility = "visible";
-    }else{
-        document.getElementById(idat).style.visibility = "hidden";
-    }
+	if(event=='show'){
+		document.getElementById(idat).style.visibility = "visible";
+	}else{
+		document.getElementById(idat).style.visibility = "hidden";
+	}
 }
 
 </script>
